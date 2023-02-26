@@ -1,14 +1,18 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)  
 
 
 @app.route('/')
-
+        
 def index():
-    return 'In Page'
+    return render_template('dashboard/index.html')
 
+@app.route('/About')
+def about():
+    return render_template('dashboard/about.html')
 
+ 
 
 
 

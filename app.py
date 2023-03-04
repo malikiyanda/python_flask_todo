@@ -17,11 +17,18 @@ class Todo(db.Model):
 with app.app_context():
     db.create_all()
 
-@app.route('/')
-    
+# x= 10
+# y='ken'
+
+@app.route('/') 
 def index():
     todo_list = Todo.query.all()
-    return render_template('dashboard/index.html', todo_list=todo_list)
+    total_todo = Todo.query.count()
+    completed_todo = Todo.query.filter_by(complete=True).count()
+    uncompleted_todo = total_todo - completed_todo
+    # return render_template('dashboard/index.html', todo_list=todo_list, total_todo=total_todo)
+    return render_template('dashboard/index.html', **locals())
+    # return render_template('dashboard/index.html', **globals())
 
 @app.route ('/add', methods=['POST'])
 def add():

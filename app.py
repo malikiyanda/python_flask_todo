@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite' #this will set out dql lite 3 DB file inside the Env root dir.
 
- #create db
+ #create db #git test
 db = SQLAlchemy(app)
 
 #create models 

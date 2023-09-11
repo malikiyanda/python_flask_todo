@@ -1,11 +1,15 @@
 from flask import Flask, render_template, redirect, url_for, request
 from flask_sqlalchemy import SQLAlchemy
+import os 
+
+from dotenv import load_dotenv
+load_dotenv()
 
 app = Flask(__name__)  
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+app.config['SQLALCHEMY_CREATE_DB'] = True  # Create the database if it doesn't exist
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite' #this will set out dql lite 3 DB file inside the Env root dir.
-
- #create db #git test
+#create db 
 db = SQLAlchemy(app)
 
 #create models 
